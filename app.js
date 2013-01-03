@@ -20,7 +20,7 @@ io.sockets.on('connection', function (socket) {
 
 	console.log('connected');
 
-		var db = redis.createClient(redisConf.port, redisConf.host);
+		var db = redis.createClient(app.config.redis_port, app.config.redis_host);
 		db.auth(redisConf.psw);
 		db.subscribe(queue);
 		
