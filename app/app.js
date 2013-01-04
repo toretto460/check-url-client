@@ -14,7 +14,6 @@ app.configure(function(){
 
 io.sockets.on('connection', function (socket) {
 
-	console.log('connected');
 	var redis = require('../lib/redistogo');
 	sub = redis.createClient();
 	sub.subscribe(queue);
