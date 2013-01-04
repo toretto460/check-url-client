@@ -1,5 +1,5 @@
 www:
   type: nodejs
   approot: .
-	config:
-	  node_version: v0.8.x
+  config:
+    node_version: v0.8.x
