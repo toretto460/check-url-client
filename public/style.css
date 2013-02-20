@@ -1,0 +1,39 @@
+body {
+	font-size: 18px;
+}
+
+.full-header {
+	position: relative;
+	width: 100%;
+	top: 38px;
+	height: 120px;
+}
+
+#list {
+	list-style: none;
+}
+
+#list li {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 1px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 8px;
+	-moz-border-radius-bottomright: 3px;
+	-moz-border-radius-bottomleft: 1px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 1px;
+	-moz-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+	-webkit-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -o-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -ms-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+}
+
+.url-name {
+	display: inline-block;
+	min-width: 260px;
+}
