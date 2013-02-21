@@ -6,7 +6,7 @@ var port = process.env.PORT || 8080;
 
 var server = app.listen(port);
 var io = require('socket.io').listen(server);
-
+var queue = settings.queue.name;
 
 //Look for static files in "/public" folder
 app.configure(function(){
@@ -17,11 +17,16 @@ io.sockets.on('connection', function (socket) {
 
 	var redis = require('../lib/redistogo');
 	sub = redis.createClient();
-	sub.subscribe(settings.queue.name);
+	sub.subscribe(queue);
 
+	pub = redis.createClient();
+	
 	//presentation message
 	socket.emit('presentation', settings.queue.schema);
-	
+
+	pub.publish(queue, 'new-client');
+	console.log('connection');
+
 	sub.on('message',function(channel, message){
 		socket.emit('message', message);
 	});
