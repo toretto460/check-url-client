@@ -1,5 +1,18 @@
+@font-face {
+    font-family: 'AmbleRegular';
+    src: url('font/Amble-Light-webfont.eot');
+    src: url('font/Amble-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/Amble-Light-webfont.woff') format('woff'),
+         url('font/Amble-Light-webfont.ttf') format('truetype'),
+         url('font/Amble-Light-webfont.svg#AmbleRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
 	font-size: 18px;
+	background: url(img/textured_stripes.png);
 }
 
 .full-header {
@@ -10,6 +23,7 @@ body {
 }
 
 #list {
+	font-family: 'AmbleRegular';
 	list-style: none;
 }
 
@@ -26,14 +40,9 @@ body {
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 1px;
-	-moz-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
-	-webkit-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
-  -o-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
-  -ms-transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
-  transform: scale(1) rotate(4deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 }
 
 .url-name {
 	display: inline-block;
-	min-width: 260px;
+	min-width: 300px;
 }
