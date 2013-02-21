@@ -20,7 +20,7 @@ io.sockets.on('connection', function (socket) {
 	sub.subscribe(settings.queue.name);
 
 	//presentation message
-	socket.emit('message', settings.queue.schema);
+	socket.emit('presentation', settings.queue.schema);
 	
 	sub.on('message',function(channel, message){
 		socket.emit('message', message);
