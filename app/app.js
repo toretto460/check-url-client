@@ -18,6 +18,9 @@ io.sockets.on('connection', function (socket) {
 	var redis = require('../lib/redistogo');
 	sub = redis.createClient();
 	sub.subscribe(settings.queue.name);
+
+	//presentation message
+	socket.emit('message', settings.queue.schema);
 	
 	sub.on('message',function(channel, message){
 		socket.emit('message', message);
