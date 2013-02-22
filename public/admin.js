@@ -2,7 +2,9 @@ function update( msg ) {
   msg = JSON.parse(msg);
   var el = "#" + msg.id;
   if( $(el).length ){
-    $(el).remove(); 
+    $(el).fadeOut(300, function(){
+      $(this).remove();
+    });
   }
 
   label_class = mapCodeToLabel(msg.code);
