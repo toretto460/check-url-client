@@ -1,17 +1,25 @@
 function update( schema, msg ) {
+  console.log(msg);
   msg = JSON.parse(msg);
   var el = "#" + msg.id;
-  if( $(el).length ){
-    $(el).fadeOut(300, function(){
-      $(this).remove();
-    });
-  }
 
   label_class = mapCodeToLabel(msg.code);
-  $("#list").append('<li id="' + msg.id + '"></li>');
-  $("#" + msg.id).append('<span class="url-name">' + msg.url + '</span>')
-            .append('<span class="label label-info">' + msg.response_time + 'ms</span>')
-            .append('<span class="label label-' + label_class + '">'+ msg.code +'</span></li>');
+  //$("#list").append('<li id="' + msg.id + '"></li>');
+  var structure = '<li id="' + msg.id + '"><span class="url-name">' + msg.url + '</span>';
+  structure+= '<span class="label label-info">' + msg.response_time + 'ms</span>';
+  structure+= '<span class="label label-' + label_class + '">'+ msg.code +'</span></li>';
+
+
+  if( $(el).length ){
+    //Updating
+    $(el).fadeOut(1000, function(){
+      $(this).html(structure);
+      $(this).fadeIn(300);
+    });
+  } else {
+    $('#list').append(structure);
+    //init element
+  }
 }
 
 function mapCodeToLabel(code) {
@@ -33,9 +41,7 @@ $(document).ready(function () {
   });
 
   socket.on('message', function(msg){
-        
       update(schema, msg);
-    
   });
 
 });

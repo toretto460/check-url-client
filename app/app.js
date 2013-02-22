@@ -33,7 +33,8 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('disconnect', function(){
 		sub.unsubscribe();
-		sub.end();
+		sub.quit();
+		pub.quit();
 	});	
 
 });
