@@ -6,7 +6,7 @@ var port = process.env.PORT || 8080;
 
 var server = app.listen(port);
 var io = require('socket.io').listen(server);
-var queue = settings.queue.name;
+var queue = settings.queue_subscribe.name;
 
 //Look for static files in "/public" folder
 app.configure(function(){
@@ -22,9 +22,9 @@ io.sockets.on('connection', function (socket) {
 	pub = redis.createClient();
 	
 	//presentation message
-	socket.emit('presentation', settings.queue.schema);
+	socket.emit('presentation', settings.queue_subscribe.schema);
 
-	pub.publish(queue, 'new-client');
+	pub.publish(settings.queue_publish.name, 'new-client');
 	console.log('connection');
 
 	sub.on('message',function(channel, message){

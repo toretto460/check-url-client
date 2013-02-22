@@ -4,7 +4,7 @@ function update( schema, msg ) {
   var el = "#" + msg.id;
 
   label_class = mapCodeToLabel(msg.code);
-  //$("#list").append('<li id="' + msg.id + '"></li>');
+
   var structure = '<li id="' + msg.id + '"><span class="url-name">' + msg.url + '</span>';
   structure+= '<span class="label label-info">' + msg.response_time + 'ms</span>';
   structure+= '<span class="label label-' + label_class + '">'+ msg.code +'</span></li>';

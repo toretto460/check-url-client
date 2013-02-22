@@ -1,6 +1,9 @@
 {
-	"queue": {
+	"queue_subscribe": {
 		"name" : "check-url",
 		"schema": ["id","url", "code"]
-	}
+	},
+	"queue_publish": {
+		"name" : "inbox"	
+		}
 }

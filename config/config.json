@@ -1,6 +1,0 @@
-{
-	"queue": {
-		"name" : "check-url",
-		"schema": ["id","url", "code"]
-	}
-}
