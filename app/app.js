@@ -11,21 +11,26 @@ app.configure(function(){
 	app.set('views', __dirname + '/../views');
 });
 
-// POST /url/new
-app.get('/url/new', function(req, res){
-  // get a form for insert new url
-  var data = {
-  	url: "/url/add"
+//Routes array
+var routes = {
+  	'url_add': "/url/add",
+  	'url_new': "/url/new"
   }
+
+// POST /url/new
+app.get(routes.url_new, function(req, res){
+  // get a form for insert new url
+  var data = {url: routes.url_add}
   res.render('forms/url-form.html', data);
 });
 
 // POST /url/add
-app.post('/url/add', function(req, res){
+app.post(routes.url_add, function(req, res){
 	//save url with id, name and timeout value
 	//seve a key on redis and publish a start message on a queue
 	//....write the code
 	console.log('implement POST: /url/add');
+	res.end();
 });
 
 var server = app.listen(app.get('port'));
