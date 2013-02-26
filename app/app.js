@@ -1,6 +1,8 @@
 var app = require('express')(),
+		express = require('express'),
     path = require('path'),
-    settings = require('../config/config.json');
+    settings = require('../config/config.json'),
+	  redis = require('../lib/redistogo');
 
 //Look for static files in "/public" folder
 app.configure(function(){
@@ -9,13 +11,20 @@ app.configure(function(){
 	app.engine('html', require('hbs').__express);
 	app.set('view engine', 'html');
 	app.set('views', __dirname + '/../views');
+	app.use(express.bodyParser());
 });
 
 //Routes array
 var routes = {
   	'url_add': "/url/add",
   	'url_new': "/url/new"
-  }
+  };
+
+var sets = {
+	'url_set': "urls"
+};
+
+var default_redis = redis.createClient();
 
 // POST /url/new
 app.get(routes.url_new, function(req, res){
@@ -26,11 +35,14 @@ app.get(routes.url_new, function(req, res){
 
 // POST /url/add
 app.post(routes.url_add, function(req, res){
-	//save url with id, name and timeout value
+	//save url with name, url and timeout value
 	//seve a key on redis and publish a start message on a queue
-	//....write the code
-	console.log('implement POST: /url/add');
-	res.end();
+  
+  var url_data = {url : req.body.url, name: req.body.name, timeout: req.body.timeout}
+
+  default_redis.hset(sets.url_set, url_data.name, JSON.stringify(url_data));
+  res.send({ result: 'ok'});
+  res.end();
 });
 
 var server = app.listen(app.get('port'));
@@ -39,7 +51,6 @@ var queue = settings.queue_subscribe.name;
 
 io.sockets.on('connection', function (socket) {
 
-	var redis = require('../lib/redistogo');
 	sub = redis.createClient();
 	sub.subscribe(queue);
 

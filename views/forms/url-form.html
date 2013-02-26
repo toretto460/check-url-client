@@ -3,28 +3,23 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Add new Url to check</h3>
   </div>
+  <form id="url-add" method="POST" action="{{ url }}" name="url-add">
   <div class="modal-body">
-    <form id="url-add" method="POST" action="{{ url }}" name="url-add">
+    <label>URL</label>
+    <input  type="text" name="name" placeholder="Google">
 		<label>URL</label>
-		<input  type="text" placeholder="http://www.google.com">
+		<input  type="text" name="url" placeholder="http://www.google.com">
 		<label>Check interval (minutes)</label>
-		<input 	type="text" placeholder="10">
-	</form>
+		<input 	type="text" name="timeout" placeholder="10">
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary" id="saveUrlSubmit">Save changes</button>
+    <input type="submit" id="url-add-submit" class="btn btn-primary" value="Add Url">
   </div>
+  </form>
   <script type="text/javascript">
-  	$('#saveUrlSubmit').click(function() {
-  		$.ajax({
-	        url: '{{ url }}',
-	        type: 'post',
-	        data: $('form#url-add').serialize(),
-	        success: function(data) {
-	                  return false;
-	                 }
-	    });
+  	$('#url-add-submit').click(function() {
+      $.post('{{ url }}',$("#url-add").serialize());
 	    return false;
   	});
   </script>
