@@ -5,12 +5,13 @@
   </div>
   <form id="url-add" method="POST" action="{{ url }}" name="url-add">
   <div class="modal-body">
-    <label>URL</label>
+    <span id="url-counter" style="display:none;"class="badge badge-info pull-right">0</span>
+    <label>Name</label>
     <input  type="text" name="name" placeholder="Google">
 		<label>URL</label>
 		<input  type="text" name="url" placeholder="http://www.google.com">
 		<label>Check interval (minutes)</label>
-		<input 	type="text" name="timeout" placeholder="10">
+		<input 	type="text" name="timeout" value="{{ default_timeout }}"placeholder="10">
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -19,7 +20,12 @@
   </form>
   <script type="text/javascript">
   	$('#url-add-submit').click(function() {
-      $.post('{{ url }}',$("#url-add").serialize());
+      $.post('{{ url }}',$("#url-add").serialize(), function(data){
+        if( data.result ){
+          $('#url-counter').fadeIn(300);
+          $('#url-counter').html(parseInt($('#url-counter').html(), 10) + 1);
+        }
+      });
 	    return false;
   	});
   </script>

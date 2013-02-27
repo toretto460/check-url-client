@@ -29,19 +29,26 @@ var default_redis = redis.createClient();
 // POST /url/new
 app.get(routes.url_new, function(req, res){
   // get a form for insert new url
-  var data = {url: routes.url_add}
+  var data = {
+  	url: routes.url_add,
+  	default_timeout: '10'
+  }
   res.render('forms/url-form.html', data);
 });
 
 // POST /url/add
 app.post(routes.url_add, function(req, res){
 	//save url with name, url and timeout value
-	//seve a key on redis and publish a start message on a queue
+	//save a key on redis and publish a start message on a queue
   
-  var url_data = {url : req.body.url, name: req.body.name, timeout: req.body.timeout}
+  var url_data = {
+  	url : req.body.url || '', 
+  	name: req.body.name || '', 
+  	timeout: req.body.timeout || ''
+  };
 
-  default_redis.hset(sets.url_set, url_data.name, JSON.stringify(url_data));
-  res.send({ result: 'ok'});
+  set_result = default_redis.hset(sets.url_set, url_data.name, JSON.stringify(url_data));
+  res.json(200, { result: set_result});
   res.end();
 });
 
