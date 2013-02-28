@@ -5,9 +5,12 @@ function update( schema, msg ) {
 
   label_class = mapCodeToLabel(msg.code);
 
-  var structure = '<li id="' + msg.id + '"><span class="url-name">' + msg.url + '</span>';
-  structure+= '<span class="label label-info">' + msg.response_time + 'ms</span>';
-  structure+= '<span class="label label-' + label_class + '">'+ msg.code +'</span></li>';
+  var url = msg.url.substring(0, 25) + '...';
+
+  var structure = '<li id="' + msg.id + '">';
+  structure+= '<span class=" url-name" ><a data-powertip="' + msg.url + '" class="tip" href="' + msg.url +'">' +  url + '</a></span>';
+  structure+= '<span class="label label-info pull-right">' + msg.response_time + 'ms</span>';
+  structure+= '<span class="badge badge-' + label_class + ' pull-right">'+ msg.code +'</span></li>';
 
 
   if( $(el).length ){
@@ -17,7 +20,8 @@ function update( schema, msg ) {
       $(this).fadeIn(300);
     });
   } else {
-    $('#list').append(structure);
+    $('#url-list').append(structure);
+    $('.tip').powerTip();
     //init element
   }
 }
