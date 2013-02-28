@@ -8,7 +8,10 @@ function update( schema, msg ) {
   var url = msg.url.substring(0, 25) + '...';
 
   var structure = '<li id="' + msg.id + '">';
-  structure+= '<span class=" url-name" ><a data-powertip="' + msg.url + '" class="tip" href="' + msg.url +'">' +  url + '</a></span>';
+  structure+= '<a data-powertip="' + msg.url + '" class="tip" target="_blank" href="' + msg.url +'">';
+  structure+= '<i class="icon-white icon-arrow-up"></i>';
+  structure+= '<span class=" url-name" >' +  url + '</span>';
+  structure+= '</a>';
   structure+= '<span class="label label-info pull-right">' + msg.response_time + 'ms</span>';
   structure+= '<span class="badge badge-' + label_class + ' pull-right">'+ msg.code +'</span></li>';
 

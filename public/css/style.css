@@ -15,12 +15,16 @@ body {
 	background: url(../img/debut_dark.png);
 }
 
+a:link {color:#CACACA;}      /* unvisited link */
+a:visited {color:#CACACA;}   /* visited link */
+a:hover {color:#CACACA;}     /* mouse over link */
+a:active {color:#CACACA;}   /* selected link */
+
 .navbar {
 	font-family: 'AmbleRegular';
 }
 
 .full-header {
-	position: relative;
 	width: 100%;
 	top: 38px;
 	height: 120px;
@@ -30,6 +34,10 @@ body {
 	font-family: 'AmbleRegular';
 	list-style: none;
 	margin-left: 0;
+}
+
+#url-list a {
+	display: inline-block;
 }
 
 .label {
