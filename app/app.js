@@ -17,7 +17,8 @@ app.configure(function(){
 //Routes array
 var routes = {
   	'url_add': "/url/add",
-  	'url_new': "/url/new"
+  	'url_new': "/url/new",
+  	'url_all': "/url/all"
   };
 
 var sets = {
@@ -26,7 +27,7 @@ var sets = {
 
 var default_redis = redis.createClient();
 
-// POST /url/new
+// GET /url/new
 app.get(routes.url_new, function(req, res){
   // get a form for insert new url
   var data = {
@@ -34,6 +35,22 @@ app.get(routes.url_new, function(req, res){
   	default_timeout: '10'
   }
   res.render('forms/url-form.html', data);
+});
+
+// GET /url/new
+app.get(routes.url_all, function(req, res){
+  // get a all entries in url set
+  var urls = {};
+  set_result = default_redis.hgetall(sets.url_set, function (err, data) {
+  	urls = data;
+  	if( err ) {
+  		res.json(500,{});
+  	} else {
+  		res.json(200, { result: true, data: urls});	
+  	}
+  	res.end();
+  });
+  
 });
 
 // POST /url/add
