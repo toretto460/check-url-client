@@ -11,8 +11,14 @@
   },
   "devDependencies": {
     "api-easy": "0.3.2",
-    "vows": "0.6.x"
+    "vows": "0.6.x",
+    "assert": "*",
+    "should": "*",
+    "tobi": "*"
   },
+  "scripts": {
+     "test": "bin/test test/*-test.js"
+   },
   "engines": {
     "node": ">= 0.8.0",
     "npm": ">= 1.1.0"
