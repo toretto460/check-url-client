@@ -1,7 +1,6 @@
 {
   "description": "A simple client for check-url (hubot script)",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "dependencies": {
     "express": "3.x",
     "mime": ">= 1.2.0",
@@ -15,13 +14,14 @@
     "assert": "*"
   },
   "scripts": {
-     "test": "bin/test test/*-test.js"
+     "test": "bin/test test/*-test.js",
+     "start": "bin/app"
    },
   "engines": {
     "node": ">= 0.8.0",
     "npm": ">= 1.1.0"
   },
-  "homepage": ".",
+  "homepage": "http://checkurlistner-toretto460.dotcloud.com",
   "author": "toretto460",
   "name": "check-url-listner"
 }
