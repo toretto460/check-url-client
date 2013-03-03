@@ -2,4 +2,6 @@
 
 npm install
 
+export NODE_ENV=development
+exec node app/app.js &
 exec ./node_modules/vows/bin/vows "$@"

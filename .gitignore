@@ -1,3 +1,4 @@
 node_modules/*
-config/config.json
+config/config_production.json
+config/config_development.json
 .DS_Store

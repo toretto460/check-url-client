@@ -1,8 +1,9 @@
 var app = require('express')(),
 		express = require('express'),
     path = require('path'),
-    settings = require('../config/config.json'),
-	  redis = require('../lib/redistogo');
+	  redis = require('../lib/redistogo'),
+    env = process.env.NODE_ENV || 'development',
+    settings = require('../config/config_' + env + '.json');
 
 //Look for static files in "/public" folder
 app.configure(function(){
