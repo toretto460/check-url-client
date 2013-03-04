@@ -6,3 +6,6 @@ services:
 before_script:
   - "export NODE_ENV=test"
   - "npm start&"
+script:
+  - "npm test"
+  - "./node_modules/mocha/bin/mocha --ignore-leaks test/unit/*"

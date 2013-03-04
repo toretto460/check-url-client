@@ -2,4 +2,4 @@
 
 npm install
 
-exec ./node_modules/vows/bin/vows "$@"
+exec ./node_modules/vows/bin/vows test/api-easy/*
